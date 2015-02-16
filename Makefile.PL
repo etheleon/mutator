@@ -1,8 +1,16 @@
 use inc::Module::Install;
 
 # Define metadata
-name           'Mutator';
-all_from       'lib/Mutator.pm';
+name            'Mutator';
+all_from        'lib/Mutator.pm';
+author          'Wesley GOI <picy2k@gmail.com>';
 
 # Specific dependencies
+requires       'Moo'  => '1.007000';
+requires       'Namespace::Clean'  => '0.25';
+  #test_requires  'Test::More'  => '0.42';
+  #recommends     'Text::CSV_XS'=> '0.50';
+  #no_index       'directory'   => 'demos';
+  #install_script 'myscript';
+
 WriteAll;
