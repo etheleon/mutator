@@ -15,8 +15,12 @@ has phredType => (
 
 sub convertPhred {
   my $self = shift;
-  $self->qualityScore(join '', map { ord($_) - $self->phredType } split('', $self->qualityScore));
+  if($self->phredType == 64)
+  {
+  $self->qualityScore(join '', map { chr($_) } map { ord($_) - 31 } split('', $self->qualityScore));
+  }
 }
+
 sub giveScore{
     my $self = shift;
     return join '', map {10**($_/(-10)) } split('', $self->qualityScore);
