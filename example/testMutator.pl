@@ -5,13 +5,20 @@ use v5.18;
 use autodie;
 use Mutator;
 
-my $qualityScore = q|_^_ccccc^^ec^beb_fdcea_g_ddffebd_^^ca[`faaffU_WZcV\`]Xb\`ddY\_^][FZaYbbab__YY_TY_`R^`[`b`]bb`abb[_]b`R]|;
-my $qual = Mutator->new(qualityScore => $qualityScore, phredType=>64);
+my $ntSequence   = q|TNGCTTCTTCTTCTTCTTCTTCTTCTACAGTTTTGATTTNNGTATCCTGAAGGAGGGAATTATCATTATGAGCAAGAGGAGTACGTGTAGCTTTCGAATGG|;
+my $qualityScore = q|bBP`cceeggeceghdfhdghiiidgfffgifhhighhiBBPP^egfhiffgieghihhiibgffhhhhggggdebbceecdddccccccccccccaabc_|;
 
-say "###Original score";
+my $qual = Mutator->new(qualityScore => $qualityScore, phredType=>64, ntSequence=>$ntSequence);
+
+say "#Original (phred+64)";
+say "----";
+say $qual->ntSequence;
 say $qual->qualityScore;
-say "\n----\n";
-say "#Converted score";
+
+say "\n#Convert quality to (phread+33)\n";
+
 $qual->convertPhred;
+say "\n#Mutated ";
+say "----";
+say $qual->mutate;
 say $qual->qualityScore;
-#say $qual->giveScore;
