@@ -51,7 +51,6 @@ sub mutate{
     my $self   = shift;
     my @qual   = $self->giveScore;
     my @readnt = split '', $self->ntSequence;
-    #say "qual:\t", scalar @qual, "nt:\t", scalar @readnt;
     my @newSequence;
     while(scalar @qual > 0)
     {
